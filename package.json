@@ -1,0 +1,25 @@
+{
+  "name": "blurts-puppeteer-l10n",
+  "version": "1.0.0",
+  "author": "Peter deHaan <peter@deseloper.com> (https://about.me/peterdehaan)",
+  "bugs": {
+    "url": "https://github.com/pdehaan/blurts-puppeteer-l10n/issues"
+  },
+  "dependencies": {
+    "meow": "5.0.0",
+    "pontoonql": "github:pdehaan/pontoonql",
+    "puppeteer": "1.10.0",
+    "rimraf": "2.6.2"
+  },
+  "homepage": "https://github.com/pdehaan/blurts-puppeteer-l10n#readme",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdehaan/blurts-puppeteer-l10n.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
