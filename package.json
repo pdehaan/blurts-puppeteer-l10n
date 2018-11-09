@@ -20,6 +20,10 @@
     "url": "git+https://github.com/pdehaan/blurts-puppeteer-l10n.git"
   },
   "scripts": {
+    "clean": "rimraf shots/*",
+    "scrape:desktop": "DESKTOP=true node index dev",
+    "scrape:mobile": "DESKTOP=false node index dev",
+    "start": "npm run scrape:desktop",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

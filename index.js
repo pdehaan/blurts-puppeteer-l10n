@@ -13,7 +13,10 @@ const servers = new Map([
   ["production", "https://monitor.firefox.com"]
 ]);
 
-main("dev", false);
+const env = process.env.ENV || process.argv[2] || "dev";
+const desktop = process.env.DESKTOP === "true" || process.argv[3] === "true" || false;
+
+main(env, desktop);
 
 async function main(env, desktop=true) {
   const locales = await getLocales("firefox-monitor-website", 80);
