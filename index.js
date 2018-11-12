@@ -14,13 +14,14 @@ const servers = new Map([
 ]);
 
 const env = process.env.ENV || process.argv[2] || "dev";
-const desktop = process.env.DESKTOP === "true" || process.argv[3] === "true" || false;
+const desktop = process.env.DESKTOP === "true" || process.argv[3] === "true" || false ;
 
-main(env, desktop);
+main(env, desktop, "linkedin");
 
-async function main(env, desktop=true) {
+async function main(env, desktop=true, breach) {
   const locales = await getLocales("firefox-monitor-website", 80);
-  const pageUrl = servers.get(env);
+  const pageUrl = servers.get(env) + (breach ? `?breach=${breach}` : "");
+  const breachSuffix = breach ? `-${breach}` : "";
 
   const desktopOrMobile = desktop ? "desktop" : "mobile";
 
@@ -42,17 +43,17 @@ async function main(env, desktop=true) {
       }
 
       await page.goto(pageUrl);
-      await page.screenshot({ path: `shots/${locale}-${desktopOrMobile}.png` });
+      await page.screenshot({ path: `shots/${locale}-${desktopOrMobile}${breachSuffix}.png` });
     } catch (err) {
       console.error(err);
       process.exitCode = 1;
     }
   }
 
-  const docs = locales.map(locale => `### ${locale}\n![](${locale}-${desktopOrMobile}.png)\n`);
+  const docs = locales.map(locale => `### ${locale}\n![](${locale}-${desktopOrMobile}${breachSuffix}.png)\n`);
   docs.unshift(pageUrl, new Date().toLocaleDateString());
 
-  fs.writeFileSync(`shots/README-${desktopOrMobile}.md`, docs.join("\n"));
+  fs.writeFileSync(`shots/README-${desktopOrMobile}${breachSuffix}.md`, docs.join("\n"));
 
   process.exit();
 }
