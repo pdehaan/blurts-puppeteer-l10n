@@ -1,5 +1,5 @@
 http://fx-breach-alerts.herokuapp.com
-11/8/2018
+2018-11-12
 ### cs
 ![](cs-mobile.png)
 
