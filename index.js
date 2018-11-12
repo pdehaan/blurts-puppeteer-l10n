@@ -3,7 +3,7 @@ const fs = require("fs");
 const pontoonql = require("pontoonql");
 const puppeteer = require("puppeteer");
 const devices = require("puppeteer/DeviceDescriptors");
-const rimraf = require("rimraf").sync;
+// const rimraf = require("rimraf").sync;
 
 const iPhone8 = devices["iPhone 8"];
 
@@ -40,6 +40,8 @@ async function main(env, desktop=true, breach) {
         await page.setViewport({ width: 1280, height: 3000 });
       } else {
         await page.emulate(iPhone8);
+        const {width} = page.viewport();
+        await page.setViewport({ width, height: 5000 });
       }
 
       await page.goto(pageUrl);
