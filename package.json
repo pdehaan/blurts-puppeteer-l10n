@@ -1,16 +1,19 @@
 {
   "name": "blurts-puppeteer-l10n",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Peter deHaan <peter@deseloper.com> (https://about.me/peterdehaan)",
   "bugs": {
     "url": "https://github.com/pdehaan/blurts-puppeteer-l10n/issues"
   },
   "dependencies": {
     "meow": "5.0.0",
+    "mkdirp": "0.5.1",
+    "npm-run-all": "4.1.3",
     "pontoonql": "github:pdehaan/pontoonql",
     "puppeteer": "1.10.0",
     "rimraf": "2.6.2"
   },
+  "description": "L10n viewer for Firefox Monitor",
   "homepage": "https://github.com/pdehaan/blurts-puppeteer-l10n#readme",
   "keywords": [],
   "license": "MPL-2.0",
@@ -21,8 +24,18 @@
   },
   "scripts": {
     "clean": "rimraf shots/*",
-    "scrape:desktop": "DESKTOP=true node index dev",
-    "scrape:mobile": "DESKTOP=false node index dev",
+    "scrape:desktop": "npm-run-all scrape:desktop:*",
+    "scrape:desktop:breach": "node index --output=shots/desktop-breach --breach=linkedin --height=3000 --desktop",
+    "scrape:desktop:home": "node index --output=shots/desktop --height=3000 --desktop",
+    "scrape:email-l10n": "npm-run-all scrape:email-l10n:*",
+    "scrape:email-l10n:breachAlert": "node index --email-l10n=breachAlert --output=shots/email-l10n/breachAlert --height=2400",
+    "scrape:email-l10n:home": " node index --email-l10n --output=shots/email-l10n --height=2000",
+    "scrape:email-l10n:multipleBreaches": "node index --email-l10n=multipleBreaches --output=shots/email-l10n/multipleBreaches --height=2400",
+    "scrape:email-l10n:noBreaches": "node index --email-l10n=noBreaches --output=shots/email-l10n/noBreaches --height=2400",
+    "scrape:email-l10n:singleBreach": "node index --email-l10n=singleBreach --output=shots/email-l10n/singleBreach --height=2000",
+    "scrape:mobile": "npm-run-all scrape:mobile:*",
+    "scrape:mobile:breach": "node index --output=shots/mobile-breach --breach=linkedin --height=5000 --mobile",
+    "scrape:mobile:home": "node index --output=shots/mobile --height=5000 --mobile",
     "start": "npm run scrape:desktop",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
