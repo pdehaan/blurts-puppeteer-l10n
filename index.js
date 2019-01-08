@@ -5,6 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 
+const got = require("got");
 const meow = require("meow");
 const mkdirp = require("mkdirp").sync;
 const pontoonql = require("pontoonql");
@@ -15,7 +16,8 @@ const servers = new Map([
   ["l10n", "https://fx-breach-alerts.herokuapp.com"],
   ["dev", "https://fx-breach-alerts.herokuapp.com"],
   ["stage", "https://blurts-server.stage.mozaws.net"],
-  ["production", "https://monitor.firefox.com"]
+  ["production", "https://monitor.firefox.com"],
+  ["gcp", "http://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net"]
 ]);
 
 const mobileDevice = devices["iPhone 8"];
@@ -86,6 +88,9 @@ function makeUrl(server, params={}) {
 async function run(flags) {
   const opts = flags.breach ? {breach: flags.breach} : null;
   const {href} = makeUrl(servers.get(flags.env), opts);
+
+  const {body} = await got.get(`${servers.get(flags.env)}/__version__`, {json: true});
+  console.log(JSON.stringify(body));
 
   if (flags.hasOwnProperty("emailL10n")) {
     const l10nHref = `${servers.get(flags.env)}/email-l10n`;

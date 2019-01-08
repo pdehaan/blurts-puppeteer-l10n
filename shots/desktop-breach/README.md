@@ -1,10 +1,13 @@
-https://fx-breach-alerts.herokuapp.com/?breach=linkedin
-11/19/2018
+http://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/?breach=linkedin
+2019-01-08
 ### cs
 ![](cs.png)
 
 ### cy
 ![](cy.png)
+
+### da
+![](da.png)
 
 ### de
 ![](de.png)
@@ -14,6 +17,9 @@ https://fx-breach-alerts.herokuapp.com/?breach=linkedin
 
 ### es-AR
 ![](es-AR.png)
+
+### es-CL
+![](es-CL.png)
 
 ### es-ES
 ![](es-ES.png)
@@ -29,6 +35,9 @@ https://fx-breach-alerts.herokuapp.com/?breach=linkedin
 
 ### hu
 ![](hu.png)
+
+### ia
+![](ia.png)
 
 ### id
 ![](id.png)
@@ -51,6 +60,9 @@ https://fx-breach-alerts.herokuapp.com/?breach=linkedin
 ### pt-PT
 ![](pt-PT.png)
 
+### ro
+![](ro.png)
+
 ### ru
 ![](ru.png)
 
@@ -71,6 +83,9 @@ https://fx-breach-alerts.herokuapp.com/?breach=linkedin
 
 ### uk
 ![](uk.png)
+
+### vi
+![](vi.png)
 
 ### zh-CN
 ![](zh-CN.png)

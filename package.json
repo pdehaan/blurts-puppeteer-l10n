@@ -6,6 +6,7 @@
     "url": "https://github.com/pdehaan/blurts-puppeteer-l10n/issues"
   },
   "dependencies": {
+    "got": "9.5.0",
     "meow": "5.0.0",
     "mkdirp": "0.5.1",
     "npm-run-all": "4.1.3",
